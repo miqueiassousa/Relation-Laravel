@@ -1,0 +1,10 @@
+Projeto do tipo API (Utilizando o Insomnia)
+
+hasOne
+belongsTo
+hasMany
+ManyToMany
+
+1ª Aula (Setup Inicial)
+
+-- Definir as rotas
