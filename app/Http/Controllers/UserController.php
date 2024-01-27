@@ -12,4 +12,19 @@ class UserController extends Controller
         $users = User::all();
         return $users;
     }
+
+    public function findOne(Request $r) {
+        $user = User::find($r->id);
+        return $user->address;
+    }
+
+    public function insert(Request $r) {
+
+        // Only vc limita os campos que serão enviador para o banco
+        $rawData = $r->only(['name','email','password']);
+        $user = User::create($rawData);
+        return $rawData;
+    }
+
+
 }

@@ -12,4 +12,12 @@ class AddressController extends Controller
         $address = Address::all();
         return $address;
     }
+
+    public function insert(Request $r) {
+
+        $rawData = $r->only(['address']);
+        $address = Address::create($rawData);
+
+        return $address;
+    }
 }

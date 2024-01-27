@@ -18,4 +18,16 @@ use App\Http\Controllers\AddressController;
 
 Route::get('/users', [UserController::class, 'index']);
 
+// Buscar por um usuário pelo ID
+Route::get('/users/{id}', [UserController::class, 'findOne']);
+
+// Incluir um novo usuario
+Route::post('/users/insert', [UserController::class, 'insert']);
+
 Route::get('/addresses', [AddressController::class, 'index']);
+
+// Buscar por um endereço pelo ID
+Route::get('/addresses/{id}', [AddressController::class, 'findOnde']);
+
+// Incluir um novo endereço
+Route::post('/addresses/insert', [AddressController::class, 'insert']);

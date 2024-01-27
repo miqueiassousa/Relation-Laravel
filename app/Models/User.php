@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    // Modelo correspondente dos campos que serão preenchidos no banco
+    // Tradução de fillable -> preenchivel
     protected $fillable = [
         'name',
         'email',
@@ -42,4 +45,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function address() {
+        return $this->hasOne(Address::class);
+    }
 }
