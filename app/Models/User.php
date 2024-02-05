@@ -26,7 +26,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
+       /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -34,6 +34,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'address_id'
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function address() {
-        return $this->hasOne(Address::class);
+    public function addresses() {
+        return $this->hasMany(Address::class);
     }
 }

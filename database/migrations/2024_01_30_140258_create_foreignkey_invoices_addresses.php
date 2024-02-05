@@ -11,21 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('invoice', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('address_id')->nullable();
+            $table->foreign('address_id')
+                ->references('id')
+                ->on('addresses')
+                ->onDelete('CASCADE');
         });
     }
 
     /**
      * Reverse the migrations.
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('invoice', function (Blueprint $table) {
             //
-            $table->dropColumn('address_id');
+            $table->$table->dropForeign('address_id');
         });
     }
 };

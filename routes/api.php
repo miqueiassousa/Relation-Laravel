@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
-
+use App\Http\Controllers\InvoiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,7 +27,12 @@ Route::post('/users/insert', [UserController::class, 'insert']);
 Route::get('/addresses', [AddressController::class, 'index']);
 
 // Buscar por um endereço pelo ID
-Route::get('/addresses/{id}', [AddressController::class, 'findOnde']);
+Route::get('/addresses/{id}', [AddressController::class, 'findOne']);
 
 // Incluir um novo endereço
 Route::post('/addresses/insert', [AddressController::class, 'insert']);
+
+//INVOICES
+Route::get('/invoices', [InvoiceController::class, 'index']);
+Route::post('/invoices/insert', [InvoiceController::class, 'createInvoice']);
+Route::get('/invoices/{id}', [InvoiceController::class, 'findOne']);

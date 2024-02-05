@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('addresses', function (Blueprint $table) {
 
 
             // O campo 'address_id' da tabela 'users' faz referenecia ao campo 'id' da tabela 'address'
-            $table->foreign('address_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('addresses')
+                ->on('users')
                 /*
 
                 onDelete('SET NULL'); -> Quando deletar um endereço e o mesmo estiver fazendo referencia a algum registro
@@ -25,7 +25,7 @@ return new class extends Migration
 
                 onDelete('CASCADE'); -> Apos apagar o endereço o usuario que esta relacionado será deletado
                  */
-                ->onDelete('SET NULL');
+                ->onDelete('CASCADE');
         });
     }
 
@@ -34,9 +34,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('addresses', function (Blueprint $table) {
             //
-            $table->$table->dropForeign('address_id');
+            $table->$table->dropForeign('user_id');
         });
     }
 };
